@@ -10,4 +10,5 @@ class BooksReciever implements Adapter {
     }
 }
 
-export default null;
+const booksReciever = new BooksReciever();
+export default booksReciever;
