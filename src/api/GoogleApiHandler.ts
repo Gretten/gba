@@ -12,7 +12,7 @@ class GoogleApiHandler implements GoogleApiInt {
         this.mainLink = mainLink;
         this.apiKey = apiKey;
     }
-    private paramString(parameters: any): string {
+    private buildParamString(parameters: any): string {
         let params = '';
         for(let key in parameters) {
             const param = `&${key}=${parameters[key]}`;
@@ -21,12 +21,12 @@ class GoogleApiHandler implements GoogleApiInt {
         return params;
     }
 
-    private createMainLink(): string {
+    private getMainLinkWithApiCode(): string {
         return `${this.mainLink}?key=${this.apiKey}`
     }
   
     public retrieve(parameters: any): Promise<any> {
-        return fetch(this.createMainLink() + this.paramString(parameters))
+        return fetch(this.getMainLinkWithApiCode() + this.buildParamString(parameters))
     }
 
 }
